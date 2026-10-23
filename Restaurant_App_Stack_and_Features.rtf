@@ -1,0 +1,86 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}{\f1 Arial;}}
+\fs24
+\pard\qc\b Restaurant App Technical Stack and Features\b0\par
+\pard\sa200\sl300\slmult1
+\b Project Overview\b0\par
+This mobile application is built as a restaurant ordering platform using Flutter. It includes browsing menus, placing online orders, booking orders for billing desk processing, payment integration, and order tracking workflows. The app is designed to run across Android, iOS, web, desktop (Windows, macOS, Linux), with a single Dart codebase.\par
+\par
+\b Programming Stack Used\b0\par
+\b 1) Frontend Stack\b0\par
+- Framework: Flutter (UI toolkit for cross-platform applications)\par
+- Language: Dart (SDK constraint in project: ^3.10.7)\par
+- UI Pattern: Widget-based UI with Material Design components\par
+- State/Data Handling: In-app state with ValueNotifier and StatefulWidget logic\par
+\par
+\b 2) Backend Stack\b0\par
+- No dedicated server-side backend is configured in this project currently.\par
+- Business logic and order flow handling are implemented directly in the Flutter application layer.\par
+- Payment and external interaction are handled through third-party integrations and deep links.\par
+\par
+\b 3) Database / Storage Stack\b0\par
+- Local data persistence: SharedPreferences (key-value storage on device)\par
+- Data format: JSON encoded/decoded order objects\par
+- Storage use case: Saving and restoring booked orders (e.g., booked_orders_v1 key)\par
+\par
+\b 4) Third-Party Integrations\b0\par
+- razorpay_flutter: Online payment gateway integration\par
+- url_launcher: Opening UPI payment intents and external links/apps\par
+- share_plus: Sharing app details\par
+- shared_preferences: Lightweight local persistence\par
+\par
+\b Frontend Features Implemented\b0\par
+- Home dashboard with hero section and quick action tiles\par
+- Two primary order journeys:\par
+  * Online Order\par
+  * Book Your Order\par
+- Rich menu browsing using categories/sections (starters, main course, desserts, beverages, etc.)\par
+- Item cards with quantity management and totals\par
+- Search and selection flow for large menu lists\par
+- Payment method selector in online ordering flow\par
+- OTP verification step before order placement\par
+- UPI payment launch flow with confirmation handling\par
+- Razorpay support for online transactions\par
+- Snackbars/dialogs for user feedback and confirmations\par
+- Order history view filtered by customer phone number\par
+- App sharing option integrated from menu actions\par
+\page
+\pard\qc\b Restaurant App Technical Stack and Features (Page 2)\b0\par
+\pard\sa200\sl300\slmult1
+\b Backend and Business Workflow Features\b0\par
+Even though there is no separate cloud backend in this repository, several backend-like workflows are implemented in-app:\par
+\par
+- Booked order ingestion and lifecycle tracking\par
+- Order status pipeline: Pending -> Completed / Canceled\par
+- Bill Maker desk workflow for operations team\par
+- Login-gated bill maker access with remember-me behavior\par
+- Order filtering controls:\par
+  * By status (all, pending, completed, canceled)\par
+  * By date scope (today, month, specific date, all)\par
+- Pending order counters for quick operational visibility\par
+\par
+\b Database and Persistence Features\b0\par
+- Persistent storage of booked orders on device restart\par
+- JSON serialization/deserialization for order and item models\par
+- Local restoration on app startup (hydration flow)\par
+- Auto-increment-like local order id generation for tracking\par
+\par
+\b Payment and Billing Features\b0\par
+- Razorpay SDK key-based payment setup scaffold\par
+- UPI intent generation with amount, payee, and transaction reference\par
+- COD (Cash on Delivery) style payment option support\par
+- Post-payment confirmation dialog including reference details\par
+\par
+\b Architecture Summary (Frontend / Backend / Database)\b0\par
+\b Frontend:\b0 Flutter + Dart + Material UI widgets + in-app state management\par
+\b Backend:\b0 No separate API server in current codebase; business workflows handled in Flutter app logic with payment gateway integration\par
+\b Database:\b0 SharedPreferences local key-value storage using JSON models for order persistence\par
+\par
+\b Notes and Recommendations\b0\par
+- For production scale, you can add a dedicated backend (Node.js, Django, Spring Boot, etc.) with secure authentication and order APIs.\par
+- Replace hardcoded credentials/keys with secure configuration management and environment secrets.\par
+- Migrate from local-only persistence to cloud database (e.g., PostgreSQL, MySQL, or Firebase) for multi-device sync and admin reporting.\par
+\par
+\b Conclusion\b0\par
+This app currently uses a strong Flutter frontend with practical payment and order management capabilities. The backend responsibilities are embedded in the client app, and database storage is local through SharedPreferences. The project is a solid prototype or MVP foundation and can be extended into a production-grade full-stack restaurant platform by adding a server API layer and centralized database.\par
+}
